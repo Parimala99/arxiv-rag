@@ -28,7 +28,7 @@ COPY --from=builder /install /usr/local
 # Copy application code
 COPY rag_pipeline.py .
 COPY main.py         .
-COPY .env.example    .   
+# COPY .env.example    .   
 
 # Non-root user for security
 RUN useradd -m appuser
