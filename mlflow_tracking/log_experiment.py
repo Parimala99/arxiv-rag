@@ -151,7 +151,9 @@ def tracked_rag_run(query: str, top_k: int = 5) -> dict:
             ok(f"{metric}: {score}")
 
         # ── log answer + sources as artifacts ──────────────────────────────────
-        import json, tempfile, pathlib
+        import json
+        import tempfile
+        import pathlib
 
         with tempfile.TemporaryDirectory() as tmp:
             # Answer text file
@@ -183,18 +185,18 @@ if __name__ == "__main__":
     parser.add_argument("--top_k",  type=int, default=5)
     args = parser.parse_args()
 
-    print(f"\n── Tracked RAG run ──────────────────────────────────────────")
+    print("\n── Tracked RAG run ──────────────────────────────────────────")
 
     result = tracked_rag_run(args.query, args.top_k)
 
-    print(f"\n── Answer ───────────────────────────────────────────────────")
+    print("\n── Answer ───────────────────────────────────────────────────")
     print(f"\n{result['answer']}\n")
 
-    print(f"── Sources ──────────────────────────────────────────────────")
+    print("── Sources ──────────────────────────────────────────────────")
     for s in result["sources"]:
         print(f"  [{s['index']}] {s['title']} | score: {s['score']}")
 
-    print(f"\n── MLflow ───────────────────────────────────────────────────")
+    print("\n── MLflow ───────────────────────────────────────────────────")
     print(f"  Run ID  : {result['mlflow_run_id']}")
     print(f"  Latency : {result['latency_seconds']}s")
-    print(f"  View UI : mlflow ui --port 5000\n")
+    print("  View UI : mlflow ui --port 5000\n")

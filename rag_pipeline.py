@@ -181,17 +181,17 @@ if __name__ == "__main__":
                         help=f"Chunks to retrieve (default {TOP_K})")
     args = parser.parse_args()
 
-    print(f"\n── RAG query ────────────────────────────────────────────────")
+    print("\n── RAG query ────────────────────────────────────────────────")
     info(f"Query : {args.query}")
     info(f"Top-k : {args.top_k}")
     print()
 
     result = run_rag(args.query, args.top_k)
 
-    print(f"\n── Answer ───────────────────────────────────────────────────")
+    print("\n── Answer ───────────────────────────────────────────────────")
     print(f"\n{result['answer']}\n")
 
-    print(f"── Sources ──────────────────────────────────────────────────")
+    print("── Sources ──────────────────────────────────────────────────")
     for s in result["sources"]:
         print(f"  [{s['index']}] {s['title']}")
         print(f"       {s['authors']} | score: {s['score']}")

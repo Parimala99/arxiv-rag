@@ -151,7 +151,7 @@ if __name__ == "__main__":
                         help="Process all blobs in chunked-docs/")
     args = parser.parse_args()
 
-    print(f"\n── Embedding + indexing ─────────────────────────────────────")
+    print("\n── Embedding + indexing ─────────────────────────────────────")
     info(f"Model: {EMBED_MODEL} | Batch size: {BATCH_SIZE}")
 
     if args.all:
@@ -169,4 +169,4 @@ if __name__ == "__main__":
         else:
             print("  \033[91m✗\033[0m  No chunked blobs found. Run chunk_docs.py first.")
 
-    print(f"\n\033[92mIndexing complete! Papers are ready to query.\033[0m\n")
+    print("\n\033[92mIndexing complete! Papers are ready to query.\033[0m\n")

@@ -150,7 +150,7 @@ if __name__ == "__main__":
                         help="Max number of papers to fetch (default 50)")
     args = parser.parse_args()
 
-    print(f"\n── Fetching arXiv papers ────────────────────────────────────")
+    print("\n── Fetching arXiv papers ────────────────────────────────────")
     info(f"Query : {args.query}")
     info(f"Max   : {args.max} papers")
 

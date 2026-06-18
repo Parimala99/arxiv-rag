@@ -61,7 +61,7 @@ try:
 
     # List existing containers
     containers = [c["name"] for c in client.list_containers()]
-    ok(f"Connected to storage account")
+    ok("Connected to storage account")
     info(f"Containers found: {containers if containers else '(none yet)'}")
 
     # Check for expected containers
@@ -84,11 +84,11 @@ try:
     downloaded = container_client.download_blob(blob_name).readall()
     parsed     = json.loads(downloaded)
     assert parsed["test"] is True
-    ok(f"Test blob downloaded and verified")
+    ok("Test blob downloaded and verified")
 
     # Clean up
     container_client.delete_blob(blob_name)
-    ok(f"Test blob cleaned up")
+    ok("Test blob cleaned up")
 
     blob_ok = True
 
@@ -117,7 +117,7 @@ try:
 
     # List existing indexes
     existing = [idx.name for idx in index_client.list_indexes()]
-    ok(f"Connected to Azure AI Search")
+    ok("Connected to Azure AI Search")
     info(f"Existing indexes: {existing if existing else '(none yet)'}")
 
     # Create papers-index if it doesn't exist
@@ -199,11 +199,11 @@ try:
     if results:
         ok(f"Test document retrieved: '{results[0]['title']}'")
     else:
-        info(f"Document uploaded but not yet searchable (indexing delay — this is normal)")
+        info("Document uploaded but not yet searchable (indexing delay — this is normal)")
 
     # Clean up test doc
     search_client.delete_documents([{"id": "test-doc-001"}])
-    ok(f"Test document cleaned up")
+    ok("Test document cleaned up")
 
     search_ok = True
 

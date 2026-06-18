@@ -142,7 +142,7 @@ if __name__ == "__main__":
                         help="Process all blobs in raw-papers/")
     args = parser.parse_args()
 
-    print(f"\n── Chunking papers ──────────────────────────────────────────")
+    print("\n── Chunking papers ──────────────────────────────────────────")
     info(f"Chunk size: {CHUNK_SIZE} words | Overlap: {CHUNK_OVERLAP} words")
 
     if args.all:
@@ -161,4 +161,4 @@ if __name__ == "__main__":
         else:
             print("  \033[91m✗\033[0m  No blobs found in raw-papers/. Run fetch_arxiv.py first.")
 
-    print(f"\n\033[92mChunking complete!\033[0m\n")
+    print("\n\033[92mChunking complete!\033[0m\n")

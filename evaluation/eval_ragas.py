@@ -79,7 +79,7 @@ def evaluate_queries(queries: list[str], top_k: int = 5) -> dict:
             fail(f"Query failed: {e}")
 
     # ── Ragas batch evaluation ─────────────────────────────────────────────────
-    print(f"\n── Ragas batch evaluation ───────────────────────────────────")
+    print("\n── Ragas batch evaluation ───────────────────────────────────")
     info(f"Evaluating {len(questions)} responses...")
 
     eval_dataset = Dataset.from_dict({
@@ -139,7 +139,8 @@ def log_to_mlflow(eval_result: dict):
         })
 
         # artifact: full results JSON
-        import tempfile, pathlib
+        import tempfile
+        import pathlib
         with tempfile.TemporaryDirectory() as tmp:
             results_path = pathlib.Path(tmp) / "eval_results.json"
             results_path.write_text(json.dumps({
@@ -171,14 +172,14 @@ if __name__ == "__main__":
 
     eval_result = evaluate_queries(queries, top_k=args.top_k)
 
-    print(f"\n── Ragas scores ─────────────────────────────────────────────")
+    print("\n── Ragas scores ─────────────────────────────────────────────")
     for metric, score in eval_result["ragas_scores"].items():
         ok(f"{metric}: {score}")
 
     run_id = log_to_mlflow(eval_result)
 
-    print(f"\n── Summary ──────────────────────────────────────────────────")
+    print("\n── Summary ──────────────────────────────────────────────────")
     ok(f"Queries evaluated : {len(eval_result['queries'])}")
     ok(f"Avg latency       : {round(sum(eval_result['latencies'])/len(eval_result['latencies']), 2)}s")
     ok(f"MLflow run        : {run_id}")
-    print(f"\n  View results: mlflow ui --port 5000\n")
+    print("\n  View results: mlflow ui --port 5000\n")
